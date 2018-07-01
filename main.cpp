@@ -18,14 +18,76 @@ int main() {
     
     freopen("111.txt","r",stdin);
     cin >> studentid;
-    cout << studentid;*/
+    cout << studentid;
 #include <iostream>
 #include <vector>
 #include <string>
 #include <fstream>
 #include <sstream>
-    using namespace std;
-    string Trim(string& str)
+using namespace std;
+string Trim(string& str)
+ {
+      str.erase(0,str.find_first_not_of(" \t\r\n"));
+    
+     str.erase(str.find_last_not_of(" \t\r\n") + 1);
+    
+      return str;
+     }
+
+ int main()
+{
+      ifstream fin("/Users/S20171105130/Desktop/STUDENT1.0.csv");
+    
+      string line;
+      while (getline(fin, line)) {
+          //cout << line << endl;
+        
+           istringstream sin(line);
+          vector<string> fields;
+           string field;
+           while (getline(sin, field, ',')) {
+                fields.push_back(field);
+               }
+        
+           string name = Trim(fields[0]);
+           string age = Trim(fields[1]);
+           string birthday = Trim(fields[2]);
+           cout << name << "\t" << age << "\t" << birthday << endl;
+          }
+        system("pause");
+        return 0;
+        
+        }
+/*
+class csvdata{
+     public:
+        int studentID;
+    string name;
+    string sex;
+    int birth;
+    };//行的类定义
+int main()
+{
+        vector<csvdata> incsv;
+        csvdata intp;
+        FILE *fp;
+        fp=fopen("/Users/S20171105130/Documents/STUDENT1.0.csv","r");//你自己的文件路径
+        while(1){
+                 fscanf(fp,"%d,%s,%s,%d",&intp.studentID,&intp.name,&intp.sex,&intp.birth);
+                incsv.push_back(intp);
+                if (feof(fp))break;
+            }
+        fclose(fp);
+        for(int i=0;i<incsv.size();i++)
+            {
+                   cout<<incsv[i].studentID<<" "<<incsv[i].name<<" "<<incsv[i].sex<<" "<<incsv[i].birth<<endl;
+            }//输出显示每行的数据
+    
+    
+    system("pause");
+    return 0;
+    }
+    /*string Trim(string& str)
     {
         //str.find_first_not_of(" \t\r\n"),在字符串str中从索引0开始，返回首次不匹配"\t\r\n"的位置
         str.erase(0,str.find_first_not_of(" \t\r\n"));
@@ -66,11 +128,64 @@ int main() {
         //fprintf(fp,"haha");
         
         return EXIT_SUCCESS;
-    }
+ 
+ }*/
 
+#include <iostream>
+#include <vector>
+#include <string>
+#include <fstream>
+#include <sstream>
+using namespace std;
+int main()
+{
+    FILE *a;
+    FILE *b;
+    b=fopen("/Users/S20171105130/Desktop/STUDENT5.0.csv","a");
+    string s1[200];
+    string s2[200];
+    string s3[200];
+    string s4[200];
+    string s5[200];
+    string s6[200];
+    string s7[200];
+    string s8[200];
+    string s9[200];
+    string s10[200];
+    string s11[200];
+    //int s12[200];
     
     
+if ((a=fopen("/Users/S20171105130/Desktop/STUDENT4.csv","r"))==0)
+{
+    printf("nono\n");
+}
     
+else
+{
+    for(int i=0;i<3;i++)
+        {
+        fscanf(a,"%s ,%s ,%s ,%s ,%s ,%s ,%s ,%s ,%s ,%s ,%s ，",s1,s2,s3,s4,s5,s6,s7,s8,s9,s10,s11);
+
+        //if(i==1||i==2)
+        //{
+         //   fprintf(b,"%s ,%s ,%s ,%s ,%s ,%s ,%d ,%d ,%d ,%d ,%d \n",s1,s2,s3,s4,s5,s6,s12[1],s12[2],s12[3],s12[4],s12[5]);
+            
+        //}
+        //else{
+        fprintf(b,"%s ,%s ,%s ,%s ,%s ,%s ,%s ,%s ,%s ,%s ,%s \n",s1,s2,s3,s4,s5,s6,s7,s8,s9,s10,s11);
+        
+       // }
+        
+}
+    
+    //printf("%s ,%s ,%s ,%s ,%s ,%s ,%s ,%s ,%s ,%s ,%s ,",s1,s2,s3,s4,s5,s6,s7,s8,s9,s10,s11);
+}
     
     return 0;
 }
+
+//%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n
+
+
+
