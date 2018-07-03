@@ -136,9 +136,14 @@ int main()
 #include <string>
 #include <fstream>
 #include <sstream>
+#include<cstdlib>
+#include "algorithm"
 using namespace std;
 int main()
 {
+    int  i,n,q,sum,max,min;
+    //用i来做计数器，用n来做总数，sum就是总和，max即是最大数，
+    //min即是最小数
     FILE *a;
     FILE *b;
     b=fopen("/Users/S20171105130/Desktop/STUDENT5.0.csv","a");
@@ -153,7 +158,7 @@ int main()
     string s9[200];
     string s10[200];
     string s11[200];
-    //int s12[200];
+    int s12[10];
     
     
 if ((a=fopen("/Users/S20171105130/Desktop/STUDENT4.csv","r"))==0)
@@ -163,28 +168,55 @@ if ((a=fopen("/Users/S20171105130/Desktop/STUDENT4.csv","r"))==0)
     
 else
 {
-    for(int i=0;i<3;i++)
+    for(int t=0;t<3;t++)
         {
-        fscanf(a,"%s ,%s ,%s ,%s ,%s ,%s ,%s ,%s ,%s ,%s ,%s ，",s1,s2,s3,s4,s5,s6,s7,s8,s9,s10,s11);
-
+        fscanf(a,"%s ,%s ,%s ,%s ,%s ,%s ,%s ,%s ,%s ,%s ,%s ",s1,s2,s3,s4,s5,s6,s7,s8,s9,s10,s11);
+            
+            cout << s11[2]<<endl;
         //if(i==1||i==2)
         //{
-         //   fprintf(b,"%s ,%s ,%s ,%s ,%s ,%s ,%d ,%d ,%d ,%d ,%d \n",s1,s2,s3,s4,s5,s6,s12[1],s12[2],s12[3],s12[4],s12[5]);
-            
+        //fprintf(b,"%s ,%s ,%s ,%s ,%s ,%s ,%d ,%d ,%d ,%d ,%d \n",s1,s2,s3,s4,s5,s6,s12[1],s12[2],s12[3],s12[4],s12[5]);
         //}
         //else{
-        fprintf(b,"%s ,%s ,%s ,%s ,%s ,%s ,%s ,%s ,%s ,%s ,%s \n",s1,s2,s3,s4,s5,s6,s7,s8,s9,s10,s11);
         
+        fprintf(b,"%s ,%s ,%s ,%s ,%s ,%s ,%s ,%s ,%s ,%s ,%s \n",s1,s2,s3,s4,s5,s6,s7,s8,s9,s10,s11);
+        //printf("%s ,%s ,%s ,%s ,%s ,%s ,%s ,%s ,%s ,%s ,%s \n",s1,s2,s3,s4,s5,s6,s7[2],s8,s9,s10,s11);
        // }
         
 }
     
-    //printf("%s ,%s ,%s ,%s ,%s ,%s ,%s ,%s ,%s ,%s ,%s ,",s1,s2,s3,s4,s5,s6,s7,s8,s9,s10,s11);
+    
 }
     
     return 0;
 }
-
+/*
+ s1[i],s2[i],s3[i],s4[i],s5[i],s6[i],s7[i],s8[i],s9[i],s10[i],s11[i]
+ #include<iostream.h>
+ void main()
+ {
+ int  i,n,a,sum,max,min;
+ //用i来做计数器，用n来做总数，sum就是总和，max即是最大数，
+ //min即是最小数
+ cout << "请输入要比较的数字的个数 n = "<<endl;
+ cin >>n ;
+ cout<<"请输入第1个数:" <<endl;
+ cin >>a;
+ min=a;                      //初始化各数
+ max=a;
+ sum=a;
+ for( i=1;i<n;++i)            //循环应用
+ {
+ cout << "请输入第"<<i+1<<"个数"<<endl;
+ cin >> a;
+ if(a>max)  {max=a;}
+ if(a<min)  {min=a;}
+ sum+=a;
+ }
+ cout <<"  最大数max = " << max <<  "  最小数min = "<< min <<endl;
+ cout << "除去最大数和最小数的总和为sum = " << sum-max-min <<endl;
+ cout  <<"此时平均数" << (sum-max-min)/n<<endl;    //平均数是n-2个数的还是n个数的，你自己改吧
+ }*/
 //%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n
 
 
