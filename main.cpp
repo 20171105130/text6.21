@@ -139,15 +139,33 @@ int main()
 #include<cstdlib>
 #include "algorithm"
 using namespace std;
+    struct student
+    {
+        
+        int StudentID;
+        char name[200];
+        char sex[200];
+        int birth;
+        char class_[200];
+        char phone[200];
+        int judge1;
+        int judge2;
+        int judge3;
+        int judge4;
+        int judge5;
+        int score;
+    };
 int main()
 {
+     struct student s[100];
+
     int  i,n,q,sum,max,min;
     //用i来做计数器，用n来做总数，sum就是总和，max即是最大数，
     //min即是最小数
     FILE *a;
     FILE *b;
     b=fopen("/Users/S20171105130/Desktop/STUDENT5.0.csv","a");
-    string s1[200];
+    /*string s1[200];
     string s2[200];
     string s3[200];
     string s4[200];
@@ -157,10 +175,15 @@ int main()
     string s8[200];
     string s9[200];
     string s10[200];
-    string s11[200];
+    string s11[200];*/
     int s12[10];
     
-    
+    //ifstream fin("/Users/S20171105130/Desktop/STUDENT4.csv");
+    //vector<string>::iterator fie;
+    //while(getline(fin,line)){
+     //   vector<string> fields;
+     //   string field;
+    //}
 if ((a=fopen("/Users/S20171105130/Desktop/STUDENT4.csv","r"))==0)
 {
     printf("nono\n");
@@ -170,9 +193,9 @@ else
 {
     for(int t=0;t<3;t++)
         {
-        fscanf(a,"%s ,%s ,%s ,%s ,%s ,%s ,%s ,%s ,%s ,%s ,%s ",s1,s2,s3,s4,s5,s6,s7,s8,s9,s10,s11);
+        fscanf(a,"%s ,%s ,%s ,%s ,%s ,%s ,%s ,%s ,%s ,%s ,%s ",&s1,&s2,&s3,&s4,&s5,&s6,&s7,&s8,&s9,&s10,&s11);
             
-            cout << s11[2]<<endl;
+            //cout << s1[i].name<<endl;
         //if(i==1||i==2)
         //{
         //fprintf(b,"%s ,%s ,%s ,%s ,%s ,%s ,%d ,%d ,%d ,%d ,%d \n",s1,s2,s3,s4,s5,s6,s12[1],s12[2],s12[3],s12[4],s12[5]);
