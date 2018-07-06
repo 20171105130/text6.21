@@ -130,41 +130,141 @@ int main()
         return EXIT_SUCCESS;
  
  }*/
-
+/*
 #include <iostream>
 #include <vector>
 #include <string>
 #include <fstream>
-#include <sstream>
-#include<cstdlib>
 #include "algorithm"
+#include <cstdlib>
+#include<stdio.h>
 using namespace std;
-    struct student
-    {
-        
-        int StudentID;
-        char name[200];
-        char sex[200];
-        int birth;
-        char class_[200];
-        char phone[200];
-        int judge1;
-        int judge2;
-        int judge3;
-        int judge4;
-        int judge5;
-        int score;
-    };
+struct student
+{
+    int StudentID;
+    char name[200];
+    char sex[200];
+    int birth;
+    char class_[200];
+    char phone[200];
+    int judge1;
+    int judge2;
+    int judge3;
+    int judge4;
+    int judge5;
+    int grade;
+};
 int main()
 {
-     struct student s[100];
+    struct student s[1000];
+    FILE *fp1,*fp2;
+    int i=0,j;
+    
+    fp1 =fopen("/Users/S20171105130/Desktop/STUDENT4.csv","r");
+    if(fp1==NULL)
+    {
+        printf("error\n");
+        exit(-1);
+    }
+    else
+    {
+        fscanf(fp1,"%*[^\n]%*c");
+        while(!feof(fp1))
+        {
+            fscanf(fp1,"%d,%[^,],%[^,],%d,%[^,],%[^,],%d,%d,%d,%d,%d",
+                   &s[i].StudentID,&s[i].name,&s[i].sex,&s[i].birth,&s[i].class_,&s[i].phone,&s[i].judge1,&s[i].judge2,&s[i].judge3,&s[i].judge4,&s[i].judge5);
+            i++;
+        }
+        j=i;
+        
+        for(i=0;i<j;i++)
+        {
+            printf("%d,%s,%s,%d,%s,%s,%d,%d,%d,%d,%d\n",s[i].StudentID,
+                   s[i].name,s[i].sex,s[i].birth,s[i].class_,s[i].phone,
+                   s[i].judge1,s[i].judge2,s[i].judge3,s[i].judge4,s[i].judge5);
+        }
+        
+        fclose(fp1);
+    }
+    j=i;
+    int max[100],min[100];
+    
+    for(i=0;i<j;i++)
+    {
+        max[i]=min[i]=s[i].judge1;
+    }
+    j=i;
+    
+    for(i=0;i<j;i++)
+    {
+        if(s[i].judge2>max[i])
+            max[i]=s[i].judge2;
+        if(s[i].judge3>max[i])
+            max[i]=s[i].judge3;
+        if(s[i].judge4>max[i])
+            max[i]=s[i].judge4;
+        if(s[i].judge5>max[i])
+            max[i]=s[i].judge5;
+    }
+    j=i;
+    
+    for(i=0;i<j;i++)
+    {
+        if(s[i].judge2<min[i])
+            min[i]=s[i].judge2;
+        if(s[i].judge3<min[i])
+            min[i]=s[i].judge3;
+        if(s[i].judge4<min[i])
+            min[i]=s[i].judge4;
+        if(s[i].judge5<min[i])
+            min[i]=s[i].judge5;
+    }
+    j=i;
+    
+    for(i=0;i<j;i++)
+    {
+        s[i].grade=(s[i].judge1+s[i].judge2+s[i].judge3+s[i].judge4+s[i].judge5-max[i]-min[i])/3;
+    }
+    j=i;
+    i=0;
+    
+    fp2=fopen("/Users/S20171105130/Desktop/STUDENT5.0.csv","w");
+    fprintf(fp2,"StudentID,name,sex,birth,class,phone,judge1,judge2,judge3,judge4,judge5,grade\n");
+    
+    while(i<j)
+    {
+        fprintf(fp2,"%d,%s,%s,%d,%s,%s,%d,%d,%d,%d,%d,%d\n",
+                s[i].StudentID,s[i].name,s[i].sex,s[i].birth,s[i].class_,
+                s[i].phone,s[i].judge1,s[i].judge2,s[i].judge3,s[i].judge4,s[i].judge5,s[i].grade);
+        i++;
+    }
+    fclose(fp2);
+    
+    return 0;
+}*/
 
-    int  i,n,q,sum,max,min;
-    //用i来做计数器，用n来做总数，sum就是总和，max即是最大数，
-    //min即是最小数
+/*int main()
+{
+    struct student s[2000];
     FILE *a;
     FILE *b;
-    b=fopen("/Users/S20171105130/Desktop/STUDENT5.0.csv","a");
+    b=fopen("/Users/S20171105130/Desktop/STUDENT5.0.csv","a");//以文本方式打开文件。
+    
+    int  i=0,j,n,q,sum,max,min;
+    if(b == NULL)
+    {
+    return -1;
+    }//打开文件出错。
+    while(fscanf(b, "%s", &v[i]) != EOF) //读取数据到数组，直到文件结尾(返回EOF)
+        i++;
+    fclose(b);//关闭文件
+    for(j = 0; j < i; j ++)//循环输出数组元素。
+    {
+        
+    }*/
+        
+    //用i来做计数器，用n来做总数，sum就是总和，max即是最大数，
+    //min即是最小数
     /*string s1[200];
     string s2[200];
     string s3[200];
@@ -175,15 +275,16 @@ int main()
     string s8[200];
     string s9[200];
     string s10[200];
-    string s11[200];*/
-    int s12[10];
+    string s11[200];
+    int s12[10];*/
     
-    //ifstream fin("/Users/S20171105130/Desktop/STUDENT4.csv");
+
     //vector<string>::iterator fie;
     //while(getline(fin,line)){
      //   vector<string> fields;
      //   string field;
     //}
+    /*
 if ((a=fopen("/Users/S20171105130/Desktop/STUDENT4.csv","r"))==0)
 {
     printf("nono\n");
@@ -203,16 +304,13 @@ else
         //else{
         
         fprintf(b,"%s ,%s ,%s ,%s ,%s ,%s ,%s ,%s ,%s ,%s ,%s \n",s1,s2,s3,s4,s5,s6,s7,s8,s9,s10,s11);
-        //printf("%s ,%s ,%s ,%s ,%s ,%s ,%s ,%s ,%s ,%s ,%s \n",s1,s2,s3,s4,s5,s6,s7[2],s8,s9,s10,s11);
-       // }
+        printf("%s ,%s ,%s ,%s ,%s ,%s ,%s ,%s ,%s ,%s ,%s \n",s1,s2,s3,s4,s5,s6,s7,s8,s9,s10,s11);
+        
         
 }
     
     
-}
-    
-    return 0;
-}
+}*/
 /*
  s1[i],s2[i],s3[i],s4[i],s5[i],s6[i],s7[i],s8[i],s9[i],s10[i],s11[i]
  #include<iostream.h>
@@ -241,6 +339,118 @@ else
  cout  <<"此时平均数" << (sum-max-min)/n<<endl;    //平均数是n-2个数的还是n个数的，你自己改吧
  }*/
 //%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n
+#include <cstdlib>
+#include<stdio.h>
+#include <iostream>
+#include <vector>
+#include <string>
+#include <fstream>
+#include "algorithm"
+using namespace std;
 
+struct student
+{
+    
+    int numbers;
+    char name[10];
+    char sex[10];
+    int dateofbirt;
+    char class1[15];
+    char phoneNo[15];
+    int judge1;
+    int judge2;
+    int judge3;
+    int judge4;
+    int judge5;
+    int score;
+};
+int main()
+{
+    struct student s[100];
+    FILE *a,*fp2;
+    int i=0,j;
+    
+    a =fopen("/Users/S20171105130/Desktop/STUDENT4.csv","r");
+    fp2=fopen("/Users/S20171105130/Desktop/STUDENT5.0.csv","w");
+    fprintf(fp2,"numbers,name,sex,dateofbirth,class,phoneNo,judge1,judge2,judge3,judge4,judge5,score\n");
+    if ((a=fopen("/Users/S20171105130/Desktop/STUDENT4.csv","r"))==0)
+    {
+        printf("nono\n");
+    }
+    else
+    {
+        fscanf(a,"%*[^\n]%*c");
+        //while(!feof(a))
+        for(i=0;i<3;i++)
+        {
+            fscanf(a,"%d,%[^,],%[^,],%d,%[^,],%[^,],%d,%d,%d,%d,%d",
+                   &s[i].numbers,&s[i].name,&s[i].sex,&s[i].dateofbirt,&s[i].class1,
+                   &s[i].phoneNo,&s[i].judge1,&s[i].judge2,&s[i].judge3,&s[i].judge4,&s[i].judge5);
+            
+        }
+    }
+    
+    return 0;
+}
 
+        //j=i;
+        
+        /*for(i=0;i<j;i++)
+        {
+            printf("%d,%s,%s,%d,%s,%s,%d,%d,%d,%d,%d\n",s[i].numbers,
+                   s[i].name,s[i].sex,s[i].dateofbirt,s[i].class1,s[i].phoneNo,
+                   s[i].judge1,s[i].judge2,s[i].judge3,s[i].judge4,s[i].judge5);
+        }
+        
+
+    }
+    j=i;
+    int max[100],min[100];
+    
+    for(i=0;i<j;i++)
+    {
+        max[i]=min[i]=s[i].judge1;
+    }
+    j=i;
+    
+    for(i=0;i<j;i++)
+    {
+        if(s[i].judge2>max[i])
+            max[i]=s[i].judge2;
+        if(s[i].judge3>max[i])
+            max[i]=s[i].judge3;
+        if(s[i].judge4>max[i])
+            max[i]=s[i].judge4;
+        if(s[i].judge5>max[i])
+            max[i]=s[i].judge5;
+    }
+    j=i;
+    
+    for(i=0;i<j;i++)
+    {
+        if(s[i].judge2<min[i])
+            min[i]=s[i].judge2;
+        if(s[i].judge3<min[i])
+            min[i]=s[i].judge3;
+        if(s[i].judge4<min[i])
+            min[i]=s[i].judge4;
+        if(s[i].judge5<min[i])
+            min[i]=s[i].judge5;
+    }
+    j=i;
+    
+    for(i=0;i<j;i++)
+    {
+        s[i].score=(s[i].judge1+s[i].judge2+s[i].judge3+s[i].judge4+s[i].judge5-max[i]-min[i])/3;
+    }
+    j=i;
+    i=0;*/
+    
+    
+    
+    //while(i<j)
+    //{
+    
+      //  i++;
+    //}
 
