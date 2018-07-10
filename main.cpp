@@ -1,6 +1,5 @@
 #include<iostream>
 #include<fstream>
-#include<string>
 using namespace std;
 struct student//定义一个student结构体
 {
@@ -9,17 +8,17 @@ struct student//定义一个student结构体
     double sum;
 };
 
-int main(int argc, const char * argv[])
+int main()
 {
     int n=0,i=0;
-    ifstream fin("/Users/S20171105130/Desktop/STUDENT4.csv");//打开文件
+    ifstream fin("/Users/S20171105130/Desktop/STUDENT4.csv");//定义一个fin对象
     string END;
-    while (getline(fin, END))//逐行读取文本内容
+    while (getline(fin, END))//逐行读取文本内容，读到/n截止，读取fin指向文件
     {
-        n++;//行数
+        n++;
     }
     struct student s[20000];//定义结构体数组s
-    FILE *fp;//定义指针
+    FILE *fp;
     
     if ((fp=fopen("/Users/S20171105130/Desktop/STUDENT4.csv","r"))==0)//以只读的方式打开文件
     {
@@ -57,7 +56,7 @@ int main(int argc, const char * argv[])
         }
     }
     FILE *fp1;
-    fp1=fopen("/Users/S20171105130/Desktop/STUDENT5.0.csv","w");
+    fp1=fopen("/Users/S20171105130/Desktop/STUDENT5.0.csv","w");//只写方式打开文件
     for(i=0;i<n;++i)
     {
         if(i==0)
@@ -67,9 +66,11 @@ int main(int argc, const char * argv[])
         }
         else
         {
-            printf("%s ,%s ,%s ,%s ,%s ,%s ,%s ,%s ,%s ,%s ,%s ,%.2f\n",s[i].StudentID,s[i].name,s[i].sex,s[i].birth,s[i].CLASS,s[i].phone,s[i].JUDGE[0],s[i].JUDGE[1],s[i].JUDGE[2],s[i].JUDGE[3],s[i].JUDGE[4],s[i].sum/3);
-            fprintf(fp1,"%s ,%s ,%s ,%s ,%s ,%s ,%s ,%s ,%s ,%s ,%s ,%.2f\n",s[i].StudentID,s[i].name,s[i].sex,s[i].birth,s[i].CLASS,s[i].phone,s[i].JUDGE[0],s[i].JUDGE[1],s[i].JUDGE[2],s[i].JUDGE[3],s[i].JUDGE[4],s[i].sum/3);
+            printf("%s ,%s ,%s ,%s ,%s ,%s ,%s ,%s ,%s ,%s ,%s ,平均分为:%.2f\n",s[i].StudentID,s[i].name,s[i].sex,s[i].birth,s[i].CLASS,s[i].phone,s[i].JUDGE[0],s[i].JUDGE[1],s[i].JUDGE[2],s[i].JUDGE[3],s[i].JUDGE[4],s[i].sum/3);
+            fprintf(fp1,"%s ,%s ,%s ,%s ,%s ,%s ,%s ,%s ,%s ,%s ,%s ,平均分为:%.2f\n",s[i].StudentID,s[i].name,s[i].sex,s[i].birth,s[i].CLASS,s[i].phone,s[i].JUDGE[0],s[i].JUDGE[1],s[i].JUDGE[2],s[i].JUDGE[3],s[i].JUDGE[4],s[i].sum/3);
         }
     }
+    fclose(fp);
+    fclose(fp1);
     return 0;
 }
